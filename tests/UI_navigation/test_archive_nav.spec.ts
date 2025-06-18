@@ -12,6 +12,7 @@ async function goToArchivePage(page) {
   await expect(page.getByRole('link', { name: 'Private Archive Private' })).toBeVisible();
 }
 
+
 test.describe('UI Navigation - Archive navigation', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('https://lt2srv.iar.kit.edu/login');
