@@ -1,4 +1,5 @@
 import { defineConfig, devices } from '@playwright/test';
+import path from 'path';
 
 /**
  * Read environment variables from file.
@@ -35,6 +36,20 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
+      name: 'chromium-fake-audio',
+      use: {
+        browserName: 'chromium',
+        launchOptions: {
+          args: [
+            '--use-fake-ui-for-media-stream',
+            '--use-fake-device-for-media-stream',
+            `--use-file-for-fake-audio-capture=C:/Users/baran/OneDrive/Documents/arbeit/ai4lt 2025 ss/playwright/assets/harvard.wav`
+          ],
+        },
+      },
+    },
+    /*
+    {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
     },
@@ -48,6 +63,7 @@ export default defineConfig({
       name: 'webkit',
       use: { ...devices['Desktop Safari'] },
     },
+    */
 
     /* Test against mobile viewports. */
     // {

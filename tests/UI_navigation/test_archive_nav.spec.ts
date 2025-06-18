@@ -1,9 +1,14 @@
 import { test, expect } from '@playwright/test';
 
+/*
+This file is responsible for testing the navigation to the Archive and its subpages.
+@author Isik Baran Sandan
+*/
 test.use({ storageState: 'auth.json' });
 
 /**
- * Helper to navigate from login page to Archive page.
+ * Helper to navigate from login page to Archive page
+ * @param {import('@playwright/test').Page} page - The Playwright page object
  */
 async function goToArchivePage(page) {
   const archiveLink = page.getByRole('link', { name: 'Archive Archive' });
