@@ -2,6 +2,10 @@ import { test, expect } from '@playwright/test';
 
 test.use({ storageState: 'auth.json' });
 
+/**
+ * This file is responsible for verifying live transcription behavior during a recording session.
+ * @author Isik Baran Sandan
+ */
 test.describe('Live transcription behavior', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('https://lt2srv.iar.kit.edu/');

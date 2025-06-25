@@ -1,5 +1,6 @@
-/*
+/** 
 This tests the login functionality of the KIT Lecture Translator via the saved login state.
+@author Isik Baran Sandan
 */
 import { test, expect } from '@playwright/test';
 

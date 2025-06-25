@@ -2,6 +2,10 @@ import { test, expect } from '@playwright/test';
 
 test.use({ storageState: 'auth.json' });
 
+/**
+ * Simple test to simulate recording using fake audio. (More for my own testing purposes)
+ * @author Isik Baran Sandan
+ */
 test('should simulate recording using fake audio', async ({ page }) => {
   await page.goto('https://lt2srv.iar.kit.edu/');
 

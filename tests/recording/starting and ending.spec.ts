@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-/*
+/**
 This file is responsible for testing the starting and ending of a live event.
 @author Isik Baran Sandan
 */
