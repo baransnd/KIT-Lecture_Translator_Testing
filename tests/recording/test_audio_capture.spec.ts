@@ -18,6 +18,5 @@ test('should simulate recording using fake audio', async ({ page }) => {
 
   // End recording
   await page.getByRole('button', { name: 'End lecture' }).click();
-  await page.getByRole('checkbox', { name: 'Save the content of this' }).check();
   await page.getByRole('button', { name: 'Confirm' }).click();
 });
