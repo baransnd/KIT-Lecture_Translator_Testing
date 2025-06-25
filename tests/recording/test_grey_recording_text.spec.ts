@@ -16,9 +16,5 @@ test('should show transcript while recording is in progress', async ({ page }) =
     const transcriptLocator = page.locator('#unstable-structuredTranscript');
     await expect(transcriptLocator).toBeVisible({ timeout: 10000 });
   
-  
-    // End recording
-    await page.getByRole('button', { name: 'End lecture' }).click();
-    await page.getByRole('button', { name: 'Confirm' }).click();
   });
   
