@@ -10,23 +10,26 @@ This project uses [Playwright](https://playwright.dev/) to test the Lecture Tran
    ```bash
    npm install
 
-2.Authenticate once
+2. **Authenticate once**
+   
     Run the login script to generate auth.json:
 
-    npx playwright test login.js
+       npx playwright test login.js
 
-Running Tests
+## Running Tests
 
-After login:
-
-    npx playwright test
-
-File Overview
+After login the file structure should be:
 
     login.js: Saves login session
 
     auth.json: Generated session file
 
     tests/ : the folder with all the end-to-end functional tests
+
+Run the following to run the tests:
+
+    npx playwright test
+
+
 
 Maintained by Isik Baran Sandan. Contact: uboal@student.kit.edu
