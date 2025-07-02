@@ -2,7 +2,11 @@ KIT Lecture Translator Test Suite
 
 This project uses [Playwright](https://playwright.dev/) to test the Lecture Translator system at KIT. It checks that:
 
-- ...
+- User can successfully login
+- User can navigate the page to archive, its subfolders and back.
+- User can create a recording and the live (grey) transcription appears
+- User can create a recording and final (black) transcription appears if the recorded language is selected.
+- User can create a recording and final (black) transcription does not appear if the recorded language is not selected.
 
 ## Setup
 
