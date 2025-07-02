@@ -18,7 +18,7 @@ This project uses [Playwright](https://playwright.dev/) to test the Lecture Tran
    
     Run the login script to generate auth.json:
 
-       npx playwright test login.js
+       node login.js
 
 ## Running Tests
 
