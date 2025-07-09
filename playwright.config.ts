@@ -36,7 +36,7 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
-      name: 'chromium-fake-audio',
+      name: 'chromium-fake-audio-english',
       use: {
         browserName: 'chromium',
         launchOptions: {
@@ -44,6 +44,19 @@ export default defineConfig({
             '--use-fake-ui-for-media-stream',
             '--use-fake-device-for-media-stream',
             `--use-file-for-fake-audio-capture=C:/Users/baran/OneDrive/Documents/arbeit/ai4lt 2025 ss/playwright/assets/harvard.wav`
+          ],
+        },
+      },
+    },
+    {
+      name: 'chromium-fake-audio-german',
+      use: {
+        browserName: 'chromium',
+        launchOptions: {
+          args: [
+            '--use-fake-ui-for-media-stream',
+            '--use-fake-device-for-media-stream',
+            `--use-file-for-fake-audio-capture=C:/Users/baran/OneDrive/Documents/arbeit/ai4lt 2025 ss/playwright/assets/german.wav`
           ],
         },
       },

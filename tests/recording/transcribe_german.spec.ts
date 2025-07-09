@@ -1,20 +1,27 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, defineConfig } from '@playwright/test';
+
+process.env.PLAYWRIGHT_PROJECT = 'chromium-fake-audio-german';
+
+export default defineConfig({});
 
 const languagesToTest = [
-  { name: 'English', shouldTranscribe: true },
-  { name: 'German', shouldTranscribe: false },
+  { name: 'English', shouldTranscribe: false },
+  { name: 'German', shouldTranscribe: true },
   { name: 'French', shouldTranscribe: false },
   { name: 'Spanish', shouldTranscribe: false },
 ];
 
 /**
- * This file is responsible for testing the transcription functionality with different languages.
+ * This file is responsible for testing the transcription functionality with german audio recording.
  * It verifies that the live transcript appears in grey during recording of correct languages
  * and that the finalized transcript appears in black after the recording of correct languages.
- * 
  * For languages that are not in the audio, it checks that no transcript (in black) appears.
  * @author Isik Baran Sandan
  */
+
+/*
+TODO: COMMENTED OUT AS I NEED TO FIGURE OUT HOW TI RUN DIFFERENT TEST FILES WITH
+DIFFERENT CONFIGS (DIFFERENT AUDIO FILES).
 
 languagesToTest.forEach(({ name: language, shouldTranscribe }) => {
   test.describe(`Transcription with language: ${language}`, () => {
@@ -60,7 +67,7 @@ languagesToTest.forEach(({ name: language, shouldTranscribe }) => {
 
     if (shouldTranscribe) {
       test(`should show grey live transcript for ${language}`, async ({ page }) => {
-        const liveTranscript = page.locator('#unstable-structuredEnglish');
+        const liveTranscript = page.locator('#unstable-structuredGerman');
 
         await expect.poll(async () => await liveTranscript.count(), {
           timeout: 20000,
@@ -88,3 +95,5 @@ languagesToTest.forEach(({ name: language, shouldTranscribe }) => {
     });
   });
 });
+
+*/
