@@ -60,7 +60,7 @@ test.describe('UI Navigation - Archive navigation', () => {
     await expect(page.getByRole('img', { name: 'Upload video' })).toBeVisible();
   });
 
-
+/* --> Commented out as this test is now in the /bugs subfolder
   test('should return to previous page after clicking "Back" from  "Private Archive"', async ({ page }) => {
     await goToArchivePage(page);
     await page.getByRole('link', { name: 'Private Archive Private' }).click();
@@ -71,5 +71,5 @@ test.describe('UI Navigation - Archive navigation', () => {
     const privateVisible = await page.getByRole('link', { name: 'Private Archive Private' }).isVisible();
     const archiveVisible = await page.getByRole('link', { name: 'Archive Archive' }).isVisible();
     expect(privateVisible || archiveVisible).toBe(true);
-  });
+  });*/
 });
