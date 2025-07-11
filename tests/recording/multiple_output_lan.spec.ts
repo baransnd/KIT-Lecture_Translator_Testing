@@ -5,7 +5,10 @@ This file is responsible for testing the starting and ending of a live event.
 */
 test.use({ storageState: 'auth.json' });
 
-test('start and end live event', async ({ page }) => {
+  /**
+   * Test to start and end a live event while selecting input/output languages.
+   */
+test('select input/output languages', async ({ page }) => {
     await page.goto('https://lt2srv.iar.kit.edu/');
 
     await page.getByRole('link', { name: 'Live event Live event' }).click();

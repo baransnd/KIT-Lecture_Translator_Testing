@@ -40,6 +40,8 @@ test('should return to previous page after clicking "Back" from  "Private Archiv
  * Test to verify that the dropdown delete button deletes a recording.
  * 
  * WARNING: If this test passes, it will delete the first recording in the archive.
+ * 
+ * TODO: Make this test more robust by creating a recording first and then deleting it.
  */
 /*
 test('should delete a recording with the dropdown menu delete button', async ({ page }) => {

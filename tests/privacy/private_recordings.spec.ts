@@ -32,7 +32,10 @@ test.describe('Private recording archive behavior', () => {
       await page.getByRole('checkbox', { name: 'Save the content of this' }).check();
       await page.getByRole('button', { name: 'Confirm' }).click();
     });
-  
+    
+    /**
+     * This test checks that a lecture marked as private does appear in the Private Archive
+     */
     test('should appear in the Private Archive', async ({ page }) => {
       await page.goto('https://lt2srv.iar.kit.edu/');
       const archiveLink = page.getByRole('link', { name: 'Archive Archive' });
@@ -44,6 +47,9 @@ test.describe('Private recording archive behavior', () => {
       await expect(page.getByText(new RegExp(lectureName))).toBeVisible();
     });
   
+    /**
+     * This test checks that a lecture marked as private does NOT appear in the Public Archive
+     */
     test('should NOT appear in the Public Archive', async ({ page }) => {
       await page.goto('https://lt2srv.iar.kit.edu/');
       const archiveLink = page.getByRole('link', { name: 'Archive Archive' });
