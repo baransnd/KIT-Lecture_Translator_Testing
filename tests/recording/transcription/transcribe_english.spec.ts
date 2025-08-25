@@ -5,6 +5,7 @@ const languagesToTest = [
   { name: 'German', shouldTranscribe: false },
   { name: 'French', shouldTranscribe: false },
   { name: 'Spanish', shouldTranscribe: false },
+  
 ];
 
 /**
