@@ -1,12 +1,5 @@
 import { test, expect} from '@playwright/test';
 
-const languagesToTest = [
-  { name: 'English', shouldTranscribe: true },
-  { name: 'German', shouldTranscribe: false },
-  { name: 'French', shouldTranscribe: false },
-  { name: 'Spanish', shouldTranscribe: false },
-  
-];
 
 /**
  * This file is responsible for testing the transcription functionality with different languages.
@@ -16,6 +9,25 @@ const languagesToTest = [
  * For languages that are not in the audio, it checks that no transcript (in black) appears.
  * @author Isik Baran Sandan
  */
+
+/**
+ * By default the transcripted recording is in English.
+ * 
+ * The recording language can be changed by running: npx playwright test --project=chromium-fake-audio-<language>
+ * where <language> has a <language>.wav file in the assets folder.
+ * 
+ * The languages that should not be transcribed can be changed by modifying the languagesToTest array below.
+ * All available languages can be found in all_languages.txt file in the assets folder.
+ */
+const languagesToTest = [
+  { name: 'English', shouldTranscribe: true },
+
+  { name: 'German', shouldTranscribe: false },
+  { name: 'French', shouldTranscribe: false },
+  { name: 'Spanish', shouldTranscribe: false },
+  { name: 'Hindi', shouldTranscribe: false },
+  { name: 'Chinese', shouldTranscribe: false },
+];
 
 languagesToTest.forEach(({ name: language, shouldTranscribe }) => {
   test.describe(`Transcription with language: ${language}`, () => {
