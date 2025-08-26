@@ -41,6 +41,9 @@ test.describe('AI Assistant', () => {
         await expect(chatButton).not.toBeVisible();
     });
 
+    /**
+     * Test to check if messages can be sent to the AI assistant and are displayed correctly.
+     */
     test('Can write messages to the assistant', async ({ page }) => {
         let text: string;
         text = `hello`;

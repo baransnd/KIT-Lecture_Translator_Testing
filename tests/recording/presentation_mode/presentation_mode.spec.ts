@@ -7,37 +7,28 @@ test.use({ storageState: 'auth.json' });
 
 test.describe('Presentation Format Tests', () => {
 
-  test('should be able to select the presentation formats', async ({ page }) => {
-    await page.goto('https://lt2srv.iar.kit.edu/');
-    await page.getByRole('link', { name: 'Live event Live event' }).click();
-    await page.locator('div').filter({ hasText: 'Start Event' }).nth(3).click();
-    await page.getByRole('button', { name: 'Advanced Options' }).click();
-  
-    await page.getByLabel('Availability').selectOption('private');
-    await page.getByRole('checkbox', { name: 'Save Session (can be deleted' }).check();
-  
-    const presentationFormat = page.getByLabel('Presentation Format');
-  
-    for (const format of ['online', 'mixed', 'offline', 'resending']) {
-      await presentationFormat.selectOption(format);
-      await expect(presentationFormat).toHaveValue(format);
-    }
-  });
+/**
+ * Ensures that only the four valid presentation formats are available.
+ * Valid options as of 26.08.2025: online, mixed, offline, resending.
+ */
+test('should only allow selecting the valid presentation formats', async ({ page }) => {
+  await page.goto('https://lt2srv.iar.kit.edu/');
+  await page.getByRole('link', { name: 'Live event Live event' }).click();
+  await page.locator('div').filter({ hasText: 'Start Event' }).nth(3).click();
+  await page.getByRole('button', { name: 'Advanced Options' }).click();
 
-  test('should not allow selecting an invalid presentation format', async ({ page }) => {
-      await page.goto('https://lt2srv.iar.kit.edu/');
-      await page.getByRole('link', { name: 'Live event Live event' }).click();
-      await page.locator('div').filter({ hasText: 'Start Event' }).nth(3).click();
-      await page.getByRole('button', { name: 'Advanced Options' }).click();
-      
-      const presentationFormat = page.getByLabel('Presentation Format');
+  const presentationFormat = page.getByLabel('Presentation Format');
 
-      const optionValues = await presentationFormat.locator('option').evaluateAll(options =>
-        options.map(option => (option as HTMLOptionElement).value)
-      );
-        
-      expect(optionValues).not.toContain('invalid_format');
-    });
+  // Extract all option values from the dropdown
+  const optionValues = await presentationFormat.locator('option').evaluateAll(options =>
+    options.map(option => (option as HTMLOptionElement).value)
+  );
+
+  const validFormats = ['online', 'mixed', 'offline', 'resending'];
+
+  // Check that the sets are exactly equal
+  expect(optionValues.sort()).toEqual(validFormats.sort());
+});
     
   /**
    * Offline mode should not generate grey text (live transcript).
