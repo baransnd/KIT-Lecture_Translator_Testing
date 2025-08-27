@@ -54,6 +54,7 @@ async function forceHoverEvents(trigger: Locator) {
   await trigger.dispatchEvent('mouseenter');
 }
 
+
 async function openSidebar(page: Page, trigger: Locator, content: Locator, timeout = 3000) {
   await trigger.scrollIntoViewIfNeeded();
   await expect(trigger).toBeVisible();
@@ -89,17 +90,11 @@ async function openSidebar(page: Page, trigger: Locator, content: Locator, timeo
 }
 
 // ---- Your test ----
-test('successfull login', async ({ page }) => {
+test('successfull sidebar in the home page', async ({ page }) => {
   const sidebarTrigger = page.locator('.sidebar-icon');    
-  const sidebarContent = page.locator('#delete_recording');  // whatever proves the sidebar opened
+  const sidebarContent = page.getByLabel('Navigation Menu');  // whatever proves the sidebar opened
 
   await page.goto('https://lt2srv.iar.kit.edu/login');
-  await expect((page).getByRole('link', { name: 'Live event Live event' })).toBeVisible();
-  await page.getByRole('link', { name: 'Live event Live event' }).click();
-  await expect(page.getByRole('img', { name: 'Start Event' })).toBeVisible();
-  await page.getByRole('img', { name: 'Start Event' }).click();
-  await expect(page.getByRole('button', { name: 'Start' })).toBeVisible();
-  await page.getByRole('button', { name: 'Start' }).click();
 
   await openSidebar(page, sidebarTrigger, sidebarContent, 4000);
 });

@@ -30,6 +30,8 @@ test.describe('Private recording archive behavior', () => {
   
       await page.getByLabel('Availability').selectOption('public'); // reset then select
       await page.getByLabel('Availability').selectOption('private');
+
+      await page.getByRole('checkbox', { name: 'Save Session (can be deleted' }).check();
   
       await page.getByRole('button', { name: 'Start' }).click();
       await page.waitForTimeout(3000); // simulate lecture duration
@@ -37,23 +39,6 @@ test.describe('Private recording archive behavior', () => {
       await page.getByRole('checkbox', { name: 'Save the content of this' }).check();
       await page.getByRole('button', { name: 'Confirm' }).click();
     });
-
-    /**
-     * Tear down: Delete the created lecture after tests are done.
-     */
-    test.afterAll(async ({ page }) => { 
-
-      const sidebarTrigger = page.locator('.sidebar-icon');    
-      const sidebarContent = page.locator('#delete_recording');  // whatever proves the sidebar opened
-
-      await page.goto('https://lt2srv.iar.kit.edu/'); 
-      const archiveLink = page.getByRole('link', { name: 'Archive Archive' });
-      await archiveLink.click(); await page.getByRole('link', { name: 'Private Archive Private' }).click(); 
-      const lectureBox = page.locator('div').filter({ hasText: lectureName }).nth(2); await lectureBox.locator('a').first().click();
-      await openSidebar(page, sidebarTrigger, sidebarContent, 4000); 
-      await page.locator('#delete_recording').click(); 
-      await page.getByRole('button', { name: 'Delete' }).click(); 
-      });
  
     
     /**
@@ -68,6 +53,24 @@ test.describe('Private recording archive behavior', () => {
       await page.getByRole('link', { name: 'Private Archive Private' }).click();
   
       await expect(page.getByText(new RegExp(lectureName))).toBeVisible();
+
+      // Clean up: Delete the created lecture
+      await page.goto('https://lt2srv.iar.kit.edu/'); 
+      await page.getByRole('link', { name: 'Archive Archive' }).click(); 
+      await page.getByRole('link', { name: 'Private Archive Private' }).click(); 
+      const lectureBox = page.locator('div').filter({ hasText: lectureName }).nth(2); 
+      await lectureBox.locator('a').first().click();
+    
+      const sidebarTrigger = page.locator('.sidebar-icon');    
+      const sidebarContent = page.locator('#delete_recording');  
+      console.log(await sidebarTrigger.count()); // should be 1+
+      console.log(await sidebarTrigger.isVisible()); // true/false
+      console.log(await sidebarTrigger.isHidden()); // true/false
+
+      await expect(sidebarTrigger).toBeVisible({ timeout: 10000 });  // <- important!
+      await openSidebar(page, sidebarTrigger, sidebarContent, 4000); 
+      await sidebarContent.click(); 
+      await page.getByRole('button', { name: 'Delete' }).click(); 
     });
   
     /**
