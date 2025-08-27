@@ -4,6 +4,8 @@ import { test, expect, type Page, type Locator } from '@playwright/test';
  * It checks that a lecture marked as private
  * 1) appears in the Private Archive
  * 2) does NOT appear in the Public Archive.
+ * 
+ * After the tests are done, the created lecture is deleted.
  * @author Isik Baran Sandan
  */
 

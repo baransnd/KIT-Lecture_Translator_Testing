@@ -3,7 +3,10 @@ import {test, expect} from '@playwright/test'
 test.use({storageState: 'auth.json'})
 
 /**
- * This file is responsible for testing if the advanced option "Save Session" works.
+ * This file is responsible for testing the functionality of not saving a recording.
+ * For saving a recording, the tests are in the file /privacy/private_recordings.spec.ts
+ * As of now there are no tests for saving a recording as public, 
+ * since the functionality is the same as saving it as private.
  * @author Isik Baran Sandan
  */
 test('Should not save a recording if the box is unckecked',async ({page}) => {

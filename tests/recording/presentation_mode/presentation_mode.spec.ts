@@ -57,13 +57,12 @@ test('should only allow selecting the valid presentation formats', async ({ page
         break;
       }
     }
-      // Select input/output languages
+    // Select input/output languages
     await page.locator('span').nth(1).click();
     await page.getByRole('option', { name: 'English' }).click();
     await page.locator('span').nth(3).click();
     await page.getByRole('option', { name: 'English' }).click();
     
-  
     await page.getByRole('button', { name: 'Start' }).click();
   
     // Simulate a short wait time to allow any potential grey text to appear
@@ -86,5 +85,9 @@ test('should only allow selecting the valid presentation formats', async ({ page
       await page.getByRole('button', { name: 'Confirm' }).click();
     }
   });
+
+  /**
+   * TODO: Add tests for other presentation formats when possible.
+   */
   
 });

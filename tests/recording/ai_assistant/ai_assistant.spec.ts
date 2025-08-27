@@ -56,6 +56,10 @@ test.describe('AI Assistant', () => {
 
     });
 
+    /**
+     * TODO: Check if the AI assistant responds to messages.
+     */
+
     test.afterEach(async ({ page }) => {
         await page.getByRole('button', { name: 'End lecture' }).click();
         await page.getByRole('button', { name: 'Confirm' }).click();
