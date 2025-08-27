@@ -61,6 +61,19 @@ export default defineConfig({
         },
       },
     },
+    {
+      name: 'chromium-fake-audio-english-german',
+      use: {
+        browserName: 'chromium',
+        launchOptions: {
+          args: [
+            '--use-fake-ui-for-media-stream',
+            '--use-fake-device-for-media-stream',
+            `--use-file-for-fake-audio-capture=C:/Users/baran/OneDrive/Documents/arbeit/ai4lt 2025 ss/playwright/assets/english_and_german.wav`
+          ],
+        },
+      },
+    },
     /*
     {
       name: 'chromium',
