@@ -35,6 +35,8 @@ test.describe('UI Navigation - Archive navigation', () => {
 
   test('should navigate to "Archive"', async ({ page }) => {
     await goToArchivePage(page);
+    const privateLink = page.getByRole('link', { name: 'Private Archive Private' });
+    await expect(privateLink).toBeVisible();
   });
 
   test('should navigate to "Private Archive" from Archive', async ({ page }) => {

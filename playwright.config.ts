@@ -47,7 +47,7 @@ export default defineConfig({
           ],
         },
       },
-    },
+    }/*,
     {
       name: 'chromium-fake-audio-german',
       use: {
@@ -73,7 +73,8 @@ export default defineConfig({
           ],
         },
       },
-    },
+    },*/
+    
     /*
     {
       name: 'chromium',
