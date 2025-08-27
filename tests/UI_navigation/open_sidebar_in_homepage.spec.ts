@@ -2,6 +2,11 @@ import { test, expect, type Page, type Locator } from '@playwright/test';
 
 test.use({ storageState: 'auth.json' });
 
+/**
+ * This file is responsible for testing the opening of the sidebar from the homepage.
+ */
+
+
 async function waitVisible(locator: Locator, timeout = 500) {
   try {
     await locator.waitFor({ state: 'visible', timeout });
