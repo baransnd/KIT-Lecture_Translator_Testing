@@ -7,6 +7,8 @@ import { test, expect} from '@playwright/test';
  * and that the finalized transcript appears in black after the recording of correct languages.
  * 
  * For languages that are not in the audio, it checks that no transcript (in black) appears.
+ * 
+ * It uses the presentation mode: "online" for simple transcription tests.
  * @author Isik Baran Sandan
  */
 
@@ -39,6 +41,7 @@ languagesToTest.forEach(({ name: language, shouldTranscribe }) => {
       await page.getByRole('link', { name: 'Live event Live event' }).click();
       await page.getByRole('img', { name: 'Start Event' }).click();
       await page.getByRole('button', { name: 'Advanced Options' }).click();
+      await page.getByLabel('Presentation Format').selectOption('online');
 
       // Remove all existing language tags
       const languageTags = page.locator('[title] >> [aria-label="remove tag"]');
@@ -80,7 +83,6 @@ languagesToTest.forEach(({ name: language, shouldTranscribe }) => {
           message: 'Live transcript should appear',
         }).toBeGreaterThan(0);
 
-        await expect(liveTranscript).toBeVisible({ timeout: 10000 });
         await expect(liveTranscript).toHaveText(/.+/, { timeout: 10000 });
       });
     }
@@ -91,7 +93,7 @@ languagesToTest.forEach(({ name: language, shouldTranscribe }) => {
       const finalizedTranscript = page.locator('.markup_transcript').first();
 
       if (shouldTranscribe) {
-        await expect(finalizedTranscript).toBeVisible({ timeout: 20000 });
+        await expect(finalizedTranscript).toContainText(/.+/, {timeout: 20000});
         const finalizedText = await finalizedTranscript.innerText();
         expect(finalizedText.trim().length).toBeGreaterThan(0);
       } else {

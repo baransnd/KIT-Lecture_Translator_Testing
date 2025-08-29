@@ -6,7 +6,20 @@ test.use({ storageState: 'auth.json' });
  * This file is responsible for testing the opening of the sidebar from the homepage.
  */
 
+test('successfull sidebar in the home page', async ({ page }) => {
+  const sidebarTrigger = page.locator('.sidebar-icon');    
+  const sidebarContent = page.getByLabel('Navigation Menu');  // whatever proves the sidebar opened
 
+  await page.goto('https://lt2srv.iar.kit.edu/login');
+
+  await openSidebar(page, sidebarTrigger, sidebarContent, 4000);
+});
+
+
+
+/*
+  * Helpers
+  */
 async function waitVisible(locator: Locator, timeout = 500) {
   try {
     await locator.waitFor({ state: 'visible', timeout });
@@ -94,12 +107,4 @@ async function openSidebar(page: Page, trigger: Locator, content: Locator, timeo
   await expect(content).toBeVisible({ timeout: 1500 });
 }
 
-// ---- Your test ----
-test('successfull sidebar in the home page', async ({ page }) => {
-  const sidebarTrigger = page.locator('.sidebar-icon');    
-  const sidebarContent = page.getByLabel('Navigation Menu');  // whatever proves the sidebar opened
 
-  await page.goto('https://lt2srv.iar.kit.edu/login');
-
-  await openSidebar(page, sidebarTrigger, sidebarContent, 4000);
-});

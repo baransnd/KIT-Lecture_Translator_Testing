@@ -44,7 +44,6 @@ test('opening the sidebar from archive recording and deleting it', async ({ page
 });
 
 
-// Put this in your helpers file or above the test
 async function getBBoxForLocator(locator: Locator) {
   const handle = await locator.elementHandle();
   return handle ? await handle.boundingBox() : null;

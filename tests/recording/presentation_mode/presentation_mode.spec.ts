@@ -62,19 +62,20 @@ test('should only allow selecting the valid presentation formats', async ({ page
     await page.getByRole('option', { name: 'English' }).click();
     await page.locator('span').nth(3).click();
     await page.getByRole('option', { name: 'English' }).click();
-    
+
+    await page.getByRole('checkbox', { name: 'Save Session (can be deleted' }).check();
     await page.getByRole('button', { name: 'Start' }).click();
   
     // Simulate a short wait time to allow any potential grey text to appear
     await page.waitForTimeout(10000);
   
     // Check that no grey text (live transcript) appears
-    const greyText = page.locator('.transcript-live'); // Adjust the selector based on actual implementation
+    const greyText = page.locator('.transcript-live'); 
     await expect(greyText).toHaveCount(0);
 
     // Wait longer to allow black text (final transcript) to appear
     const finalizedTranscript = page.locator('.markup_transcript').first();
-    await expect(finalizedTranscript).toBeVisible({ timeout: 120000 }); // Wait up to 120 seconds for the final transcript to appear.
+    await expect(finalizedTranscript).toContainText(/.+/, {timeout: 120000}); // Wait up to 120 seconds for the final transcript to appear.
     const finalizedText = await finalizedTranscript.innerText();
     expect(finalizedText.trim().length).toBeGreaterThan(0);
 
