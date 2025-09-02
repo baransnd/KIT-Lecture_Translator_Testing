@@ -39,7 +39,7 @@ test('should return to previous page after clicking "Back" from  "Private Archiv
 /**
  * Test to verify that the dropdown delete button deletes a recording.
  * 
- * WARNING: If this test passes, it will delete the first recording in the archive.
+ * WARNING: If this test passes, it will delete the first recording in the private archive.
  * 
  * TODO: Make this test more robust by creating a recording first and then deleting it.
  */

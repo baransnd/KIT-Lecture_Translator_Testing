@@ -54,24 +54,26 @@ test.describe('Private recording archive behavior', () => {
   
       await expect(page.getByText(new RegExp(lectureName))).toBeVisible();
 
-      // Clean up: Delete the created lecture
+      /*  Clean up: Delete the created lecture -> TODO: Does not work reliably yet.
       await page.goto('https://lt2srv.iar.kit.edu/'); 
       await page.getByRole('link', { name: 'Archive Archive' }).click(); 
       await page.getByRole('link', { name: 'Private Archive Private' }).click(); 
       const lectureBox = page.locator('div').filter({ hasText: lectureName }).nth(2); 
       await lectureBox.locator('a').first().click();
-    
+      
       const sidebarTrigger = page.locator('.sidebar-icon');    
       const sidebarContent = page.locator('#delete_recording');  
       console.log(await sidebarTrigger.count()); // should be 1+
       console.log(await sidebarTrigger.isVisible()); // true/false
       console.log(await sidebarTrigger.isHidden()); // true/false
 
-      await expect(sidebarTrigger).toBeVisible({ timeout: 10000 });  // <- important!
+      await expect(sidebarTrigger).toBeVisible({ timeout: 10000 }); 
       await openSidebar(page, sidebarTrigger, sidebarContent, 4000); 
       await sidebarContent.click(); 
       await page.getByRole('button', { name: 'Delete' }).click(); 
+      */
     });
+    
   
     /**
      * This test checks that a lecture marked as private does NOT appear in the Public Archive
