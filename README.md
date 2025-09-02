@@ -23,7 +23,13 @@ TODO List
 - TODO: User can navigate to settings, the subfolders and back.
 - TODO: User can open the sidebar during a recording
 - TODO: AI assistant replies after a message.
-- TODO: succesfully opening the sidebar from an archived recording -> deleting a recording.
+- TODO: Transcription tests for mixed language audio
+- TODO: Tests for other presentation modes: Mixed and Resending
+- TODO: bash script to run the code/tests !
+- TODO: Check for text in the translation boxes !
+- TODO: check if the audio is there in the recording
+- TODO: check the tranlation languages (selected output language is actually outputed)
+
 ## Setup
 
 1. **Install dependencies** 

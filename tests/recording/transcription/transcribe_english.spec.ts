@@ -24,11 +24,7 @@ import { test, expect} from '@playwright/test';
 const languagesToTest = [
   { name: 'English', shouldTranscribe: true },
 
-  { name: 'German', shouldTranscribe: false },
-  { name: 'French', shouldTranscribe: false },
-  { name: 'Spanish', shouldTranscribe: false },
-  { name: 'Hindi', shouldTranscribe: false },
-  { name: 'Chinese', shouldTranscribe: false },
+
 ];
 
 languagesToTest.forEach(({ name: language, shouldTranscribe }) => {

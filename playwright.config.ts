@@ -43,7 +43,7 @@ export default defineConfig({
           args: [
             '--use-fake-ui-for-media-stream',
             '--use-fake-device-for-media-stream',
-            `--use-file-for-fake-audio-capture=C:/Users/baran/OneDrive/Documents/arbeit/ai4lt 2025 ss/playwright/assets/harvard.wav`
+            `--use-file-for-fake-audio-capture=C:/Users/baran/OneDrive/Documents/arbeit/ai4lt 2025 ss/playwright/assets/english.wav`
           ],
         },
       },
