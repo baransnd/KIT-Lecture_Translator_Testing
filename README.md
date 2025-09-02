@@ -3,7 +3,8 @@ KIT Lecture Translator Test Suite
 This project uses [Playwright](https://playwright.dev/) to test the Lecture Translator system at KIT. It checks that:
 
 - User can successfully login
-- User can navigate the page to archive, its subfolders and back. (fails)
+- User can navigate the page to archive, its subfolders and back. (back fails)
+- User can navigate to the Live Event page, its subpages and back.
 - User can open the sidebar from the homepage
 - User can open the sidebar from an archived recording. (fails)
 - User can create a private recording that only appears in the private archive.
@@ -19,6 +20,7 @@ This project uses [Playwright](https://playwright.dev/) to test the Lecture Tran
 - User can create a recording and final (black) transcription does not appear if the recorded language is not selected.
 
 TODO List
+- TODO: User can navigate to settings, the subfolders and back.
 - TODO: User can open the sidebar during a recording
 - TODO: AI assistant replies after a message.
 - TODO: succesfully opening the sidebar from an archived recording -> deleting a recording.
