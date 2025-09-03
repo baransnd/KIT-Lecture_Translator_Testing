@@ -1,4 +1,4 @@
-import { test, expect, type Page, type Locator } from '@playwright/test';
+import { test, expect, type Page,  type BrowserContext,type Locator } from '@playwright/test';
 /**
  * This file is responsible for testing the private recordings functionality.
  * It checks that a lecture marked as private
@@ -15,11 +15,16 @@ test.use({ storageState: 'auth.json' });
 
 test.describe('Private recording archive behavior', () => {
     let lectureName: string;
+    let context: BrowserContext;
+    let page: Page;
 
     /**
      * Set up: Start a private lecture before running the tests and save it to the private archive.
      */
-    test.beforeAll(async ({ page }) => {
+    test.beforeAll(async ({ browser }) => {
+      context = await browser.newContext({ storageState: 'auth.json' });
+      page = await context.newPage();
+  
       lectureName = `privateLectureExample ${Date.now()}`;
   
       await page.goto('https://lt2srv.iar.kit.edu/');
@@ -30,14 +35,17 @@ test.describe('Private recording archive behavior', () => {
   
       await page.getByLabel('Availability').selectOption('public'); // reset then select
       await page.getByLabel('Availability').selectOption('private');
-
+  
       await page.getByRole('checkbox', { name: 'Save Session (can be deleted' }).check();
   
       await page.getByRole('button', { name: 'Start' }).click();
-      await page.waitForTimeout(3000); // simulate lecture duration
+      await page.waitForTimeout(3000);
       await page.getByRole('button', { name: 'End lecture' }).click();
       await page.getByRole('checkbox', { name: 'Save the content of this' }).check();
       await page.getByRole('button', { name: 'Confirm' }).click();
+  
+      await page.close();
+      await context.close();
     });
  
     

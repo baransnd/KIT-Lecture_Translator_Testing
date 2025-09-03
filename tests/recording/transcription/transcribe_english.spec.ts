@@ -24,6 +24,8 @@ import { test, expect} from '@playwright/test';
 const languagesToTest = [
   { name: 'English', shouldTranscribe: true },
 
+  { name: 'French', shouldTranscribe: false },
+  { name: 'German', shouldTranscribe: false },
 
 ];
 

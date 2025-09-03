@@ -34,13 +34,15 @@ TODO List
 
 1. **Install dependencies** 
    ```bash
-   npm install
+   chmod +x run-tests.sh
+
 
 2. **Authenticate once**
    
-    Run the login script to generate auth.json:
+    Run the following to first login and then run the tests:
 
-       node login.js
+       ./run-tests.sh
+
 
 ## Running Tests
 
