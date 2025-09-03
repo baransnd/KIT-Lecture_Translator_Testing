@@ -19,16 +19,18 @@ This project uses [Playwright](https://playwright.dev/) to test the Lecture Tran
 - User can create a recording and final (black) transcription appears if the recorded language is selected.
 - User can create a recording and final (black) transcription does not appear if the recorded language is not selected.
 
-TODO List
-- TODO: User can navigate to settings, the subfolders and back.
-- TODO: User can open the sidebar during a recording
-- TODO: AI assistant replies after a message.
-- TODO: Transcription tests for mixed language audio
-- TODO: Tests for other presentation modes: Mixed and Resending
+TODO List Priority
 - TODO: bash script to run the code/tests !
 - TODO: Check for text in the translation boxes !
 - TODO: check if the audio is there in the recording
+TODO List General
+- TODO: User can navigate to settings, the subfolders and back.
+- TODO: Transcription tests for mixed language audio
+- TODO: Tests for other presentation modes: Mixed and Resending
 - TODO: check the tranlation languages (selected output language is actually outputed)
+TODO List - Tried and Failed
+- TODO: User can open the sidebar during a recording
+
 
 ## Setup
 
@@ -37,27 +39,11 @@ TODO List
    chmod +x run-tests.sh
 
 
-2. **Authenticate once**
+2. **Authenticate and run tests**
    
     Run the following to first login and then run the tests:
 
        ./run-tests.sh
-
-
-## Running Tests
-
-After login the file structure should be:
-
-    login.js: Saves login session
-
-    auth.json: Generated session file
-
-    tests/ : the folder with all the end-to-end functional tests
-
-Run the following to run the tests:
-
-    npx playwright test
-
 
 
 Maintained by Isik Baran Sandan. Contact: uboal@student.kit.edu
