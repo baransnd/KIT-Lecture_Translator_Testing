@@ -15,7 +15,7 @@ test.describe('AI Assistant', () => {
         await page.locator('div').filter({ hasText: 'Start Event' }).nth(3).click();
         await page.getByRole('button', { name: 'Advanced Options' }).click();
         await page.getByLabel('Availability').selectOption('private');
-        await page.getByRole('checkbox', { name: 'Save Session (can be deleted' }).uncheck();
+        await page.getByRole('checkbox', { name: 'Save Session (can be deleted' }).check();
     });
 
     /**

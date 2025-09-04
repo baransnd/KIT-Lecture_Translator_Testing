@@ -34,7 +34,7 @@ export default defineConfig({
   },
 
   /* Configure projects for major browsers */
-  projects: [
+  projects: [ 
     {
       name: 'chromium-fake-audio-english',
       use: {
@@ -47,7 +47,7 @@ export default defineConfig({
           ],
         },
       },
-    }/*,
+    },
     {
       name: 'chromium-fake-audio-german',
       use: {
@@ -73,7 +73,7 @@ export default defineConfig({
           ],
         },
       },
-    },*/
+    },
     
     /*
     {
