@@ -6,23 +6,33 @@ echo "Installing dependencies..."
 npm install
 
 # Run login.js to generate auth.json
-# you can comment this out if you are already logged in
-# auth.json will be valid upto a week
-echo "Running login script..."
-node login.js
+# node login.js
 
-# Run transcription tests with ALL projects
+TRANS_EXIT_CODE=0
+OTHER_EXIT_CODE=0
+
 TRANSCRIPTION_SPEC="tests/recording/transcribe/transcribe_new.spec.ts"
 
+# Run transcription tests
 if [ -f "$TRANSCRIPTION_SPEC" ]; then
   echo "Running transcription tests with all projects..."
-  npx playwright test "$TRANSCRIPTION_SPEC" --headed --workers=1 || true
+  npx playwright test "$TRANSCRIPTION_SPEC" --headed --workers=1 --reporter=list || TRANS_EXIT_CODE=$?
 else
   echo "No transcription spec found at $TRANSCRIPTION_SPEC, skipping."
 fi
 
-# Run all other tests (excluding transcription) with English-only project
+# Run all other tests
 echo "Running all other tests with English project only..."
-npx playwright test --project=chromium-fake-audio-english --grep-invert "Transcription" --headed --workers=1
+npx playwright test --project=chromium-fake-audio-english --grep-invert "Transcription" --headed --workers=1 --reporter=list || OTHER_EXIT_CODE=$?
 
+# Launch the HTML report at the end (non-blocking)
+echo "Opening combined HTML report..."
+npx playwright show-report || true
 
+# Exit with failure if any tests failed
+if [ $TRANS_EXIT_CODE -ne 0 ] || [ $OTHER_EXIT_CODE -ne 0 ]; then
+  echo "Some tests failed."
+  exit 1
+fi
+
+echo "All tests completed successfully."

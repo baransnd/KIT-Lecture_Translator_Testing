@@ -81,7 +81,7 @@ test.describe('Transcription tests', () => {
           test.skip(true, `${language} is not expected to transcribe for project ${testInfo.project.name}`);
         }
 
-        const liveTranscript = page.locator('#unstable-structuredEnglish');
+        const liveTranscript = page.locator('[id*="unstable-structured"]');
         await expect.poll(async () => await liveTranscript.count(), {
           timeout: 20000,
           message: 'Live transcript should appear',
