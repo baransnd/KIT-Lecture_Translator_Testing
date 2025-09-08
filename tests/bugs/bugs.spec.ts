@@ -44,6 +44,7 @@ test('should return to previous page after clicking "Back" from  "Private Archiv
  * TODO: Make this test more robust by creating a recording first and then deleting it.
  */
 
+/*
 test('should delete a recording with the dropdown menu delete button', async ({ page }) => {
     await page.goto('https://lt2srv.iar.kit.edu/login');
 
@@ -64,4 +65,4 @@ test('should delete a recording with the dropdown menu delete button', async ({ 
     await new Promise(resolve => setTimeout(resolve, 1000));
 
     await expect(page.getByRole('link', { name: 'KIT lecture translator' })).toBeVisible();
-});
+}); */

@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 
+
 /**
  * Map project name -> which language(s) should transcribe.
  */
@@ -17,8 +18,11 @@ function shouldTranscribeFor(projectName: string, language: string) {
 
 const LANGUAGES = ['English', 'French', 'German'];
 
+/**
+ * Transcription tests: tests that live and finalized transcription 
+ * work as expected for different languages. 
+ */ 
 test.describe('Transcription tests', () => {
-  // use auth for every test in this file
   test.use({ storageState: 'auth.json' });
 
   // run each describe serially to avoid overlapping recordings in the same browser/page
@@ -66,7 +70,11 @@ test.describe('Transcription tests', () => {
         }
       });
 
-      // Live-transcript check — only runs when this language *should* transcribe for the project
+      /* 
+       * Live-transcript check — only runs when this language is selected as input,
+      skips if the language is not expected to transcribe for the project,
+      since what is important is that final transcription does not appear 
+      */ 
       test(`live transcript appears for ${language} (if expected)`, async ({ page }, testInfo) => {
         const shouldTranscribe = shouldTranscribeFor(testInfo.project.name, language);
         if (!shouldTranscribe) {
@@ -98,4 +106,4 @@ test.describe('Transcription tests', () => {
       });
     });
   }
-});
+}); 

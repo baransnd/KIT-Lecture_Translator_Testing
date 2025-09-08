@@ -20,7 +20,6 @@ This project uses [Playwright](https://playwright.dev/) to test the Lecture Tran
 - User can create a recording and final (black) transcription does not appear if the recorded language is not selected.
 
 TODO List - Priority
-- TODO: change the bash so that certain tests run with certain projects in the config.ts file.
 - TODO: Check for text in the translation boxes !
 - TODO: check if the audio is there in the recording
 
@@ -29,10 +28,11 @@ TODO List - General
 - TODO: Transcription tests for mixed language audio
 - TODO: Tests for other presentation modes: Mixed and Resending
 - TODO: check the tranlation languages (selected output language is actually outputed)
+- TODO: bugs/test('should delete a recording with the dropdown menu delete button')  should be made robust by creating a recording first.
   
 
 TODO List - Tried and Failed
-- TODO: User can open the sidebar during a recording
+- User can open the sidebar during a recording --> The sidebar behaviour during a recording is different from sidebar behavior while navigating the lecture translator.
 
 
 ## Setup
@@ -45,8 +45,12 @@ TODO List - Tried and Failed
 2. **Authenticate and run tests**
    
     Run the following to first login and then run the tests:
+    (By default only tests for english recordings)
 
        ./run-tests.sh
+
+   To test if the funtionalities work for german recordings as well, run:
+      ./run-tests-mul.sh
 
 
 Maintained by Isik Baran Sandan. Contact: uboal@student.kit.edu

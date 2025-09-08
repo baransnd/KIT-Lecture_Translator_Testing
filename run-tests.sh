@@ -13,5 +13,3 @@ node login.js
 echo "Running Playwright tests..."
 npx playwright test "$@"
 
-#run the following to see the browser window during tests instead of headless mode
-#npx playwright test --headed --workers=1 "$@"
